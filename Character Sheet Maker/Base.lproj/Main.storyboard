@@ -34,24 +34,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
-        <!--Table View Controller-->
+        <!--Files Table View Controller-->
         <scene sceneID="umB-MT-3qT">
             <objects>
-                <tableViewController id="Snw-aE-iup" sceneMemberID="viewController">
+                <tableViewController id="Snw-aE-iup" customClass="FilesTableViewController" customModule="Character_Sheet_Maker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="uW1-Ze-6kQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="TUp-se-398">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="File Navigator" id="98f-AO-lha">
+                                    <barButtonItem key="rightBarButtonItem" systemItem="add" id="kST-Nl-qHn"/>
+                                </navigationItem>
+                            </items>
+                        </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="BSP-FY-O6F">
-                                <rect key="frame" x="0.0" y="28" width="600" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="BSP-FY-O6F" customClass="FilesTableViewCell" customModule="Character_Sheet_Maker" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="72" width="600" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BSP-FY-O6F" id="GwH-T4-eYj">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="79.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ffN-GB-EDa">
-                                            <rect key="frame" x="8" y="8" width="64" height="64"/>
+                                            <rect key="frame" x="8" y="9" width="64" height="64"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="160" id="jfZ-rX-F9M"/>
                                             </constraints>
@@ -74,6 +83,10 @@
                                         <constraint firstAttribute="bottomMargin" secondItem="ffN-GB-EDa" secondAttribute="bottom" constant="-14.5" id="wFF-K2-fk8"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="icon" destination="ffN-GB-EDa" id="Wde-Ym-u7F"/>
+                                    <outlet property="title" destination="BnI-KI-3CB" id="N8B-2h-SyV"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -81,6 +94,10 @@
                             <outlet property="delegate" destination="Snw-aE-iup" id="HX7-Yq-vLD"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="addButton" destination="kST-Nl-qHn" id="H5q-BI-6dV"/>
+                        <outlet property="buttonAdd" destination="kST-Nl-qHn" id="zxp-hG-79O"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vo0-ma-zFd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

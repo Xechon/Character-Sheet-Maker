@@ -8,33 +8,5 @@
 
 import UIKit
 
-class Sheet: NSObject, NSCoding {
-    var title: String;
-    var elements = [UIView]()
-    
-    struct PropertyKey {
-        static let titleKey = "title"
-        static let elementsKey = "elements"
-    }
-    
-    init?(title: String, elements: UIView...) {
-        self.title = title;
-        for i in elements {
-            self.elements += [i]
-        }
-    }
-    
-    init?(title: String, elements: [UIView]) {
-        self.title = title;
-        self.elements += elements
-    }
-    
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(title, forKey: PropertyKey.titleKey)
-        aCoder.encodeObject(elements, forKey: PropertyKey.elementsKey)
-    }
-    
-    required convenience init?(coder aDecoder: NSCoder) {
-        self.init(title: aDecoder.decodeObjectForKey(PropertyKey.titleKey) as! String, elements: aDecoder.decodeObjectForKey(PropertyKey.elementsKey) as! [UIView])
-    }
+class Sheet: NSObject{
 }

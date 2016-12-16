@@ -9,9 +9,14 @@
 import UIKit
 
 class FilesTableViewController: UITableViewController {
+    @IBOutlet weak var buttonAdd: UIBarButtonItem!
+    
+    var files = [FileBase]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        files = loadFileData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +34,27 @@ class FilesTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return files.count
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("filesTableViewCell", forIndexPath: indexPath) as! FilesTableViewCell
 
-        // Configure the cell...
+        let file = files[indexPath.row]
+        
+        cell.title.text = file.title
+        cell.icon.image = UIImage(named: file.fileType.rawValue)
+        cell.data = file
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -93,7 +102,20 @@ class FilesTableViewController: UITableViewController {
     */
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if let selectedCell = sender as? FilesTableViewCell {
+            /*switch selectedCell.data.fileType {
+            case FileBase.FileType.folder:
+                
+            case FileBase.FileType.sheet:
+                //do
+            case FileBase.FileType.template:
+                //do
+            }*/
+        }
+    }
+    
+    func loadFileData() -> [FileBase] {
+        return NSKeyedUnarchiver.unarchiveObjectWithFile(FileBase.ArchiveURL.path!) as! [FileBase]
     }
 
 }
